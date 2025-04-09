@@ -120,33 +120,99 @@
 
         <!--Formulario de cadastro de cliente-->
 
-    <!-- Secao Cadastro -->
-    <section id="cadastro" class="mt-5">
-        <h2>Cadastro de Cliente</h2>
-        <form>
-            <div class="mb-2">
-                <label>Nome:</label>
-                <input type="text" class="form-control" required />
-            </div>
-            <div class="mb-2">
-                <label>CPF:</label>
-                <input type="text" class="form-control" required />
-            </div>
-            <div class="mb-2">
-                <label>Endereco:</label>
-                <input type="text" class="form-control" required />
-            </div>
-            <div class="mb-2">
-                <label>Telefone:</label>
-                <input type="tel" class="form-control" required />
-            </div>
-            <div class="mb-2">
-                <label>Email:</label>
-                <input type="email" class="form-control" required />
-            </div>
-            <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
-        </form>
-    </section>
+    <!-- Seção Cadastro -->
+<section id="cadastro" class="mt-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Cadastro de Cliente</h2>
+      <form id="formCadastro" class="row g-3 needs-validation" novalidate>
+  
+        <div class="col-md-6">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" required>
+          <div class="invalid-feedback">Informe seu nome.</div>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="cpf" class="form-label">CPF</label>
+          <input type="text" class="form-control" id="cpf" maxlength="14" required>
+          <div class="invalid-feedback">Informe um CPF válido.</div>
+        </div>
+  
+        <div class="col-md-12">
+          <label for="endereco" class="form-label">Endereço</label>
+          <input type="text" class="form-control" id="endereco" required>
+          <div class="invalid-feedback">Informe o endereço.</div>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="tel" class="form-control" id="telefone" required>
+          <div class="invalid-feedback">Informe o telefone.</div>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" required>
+          <div class="invalid-feedback">Informe um e-mail válido.</div>
+        </div>
+  
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary px-4 mt-3">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Script para CPF + Validação -->
+  <script>
+    // Máscara automática de CPF
+    document.getElementById('cpf').addEventListener('input', function () {
+      let v = this.value.replace(/\D/g, '');
+      if (v.length > 3) v = v.slice(0, 3) + '.' + v.slice(3);
+      if (v.length > 7) v = v.slice(0, 7) + '.' + v.slice(7);
+      if (v.length > 11) v = v.slice(0, 11) + '-' + v.slice(11, 13);
+      this.value = v.slice(0, 14);
+    });
+  
+    // Validação de CPF simples (formato e dígitos repetidos)
+    function validarCPF(cpf) {
+      cpf = cpf.replace(/[^\d]+/g, '');
+      if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+  
+      let soma = 0, resto;
+  
+      for (let i = 1; i <= 9; i++)
+        soma += parseInt(cpf[i - 1]) * (11 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(cpf[9])) return false;
+  
+      soma = 0;
+      for (let i = 1; i <= 10; i++)
+        soma += parseInt(cpf[i - 1]) * (12 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      return resto === parseInt(cpf[10]);
+    }
+  
+    // Validação Bootstrap + CPF
+    const form = document.getElementById('formCadastro');
+    form.addEventListener('submit', function (event) {
+      const cpf = document.getElementById('cpf');
+  
+      if (!form.checkValidity() || !validarCPF(cpf.value)) {
+        event.preventDefault();
+        event.stopPropagation();
+        cpf.classList.add('is-invalid');
+      } else {
+        cpf.classList.remove('is-invalid');
+        cpf.classList.add('is-valid');
+      }
+  
+      form.classList.add('was-validated');
+    });
+  </script>
+  
 
     <!-- Secao Agendamento -->
      <section id="agendamento" class="mt-5">
