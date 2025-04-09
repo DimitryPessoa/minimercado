@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimercado Bom Demais</title>
+    
+    <!-- Importacao do CSS do Bootstrap para estilizacao-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Importacao do javaScritp do Bootstrap para interatividade-->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- importacao de um script JavaScript externo para funcionalidades adicionais-->
+    <script defer src="script.js"></script>
+
+    <style>
+        /* Definicao da fonte do corpo do site do minimercadinho */
+        body {
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth; /*Rolagem suave ao clicar nos links*/
+        }
+
+       /* corrige sobreposicao do cabecalho nas ancoras */
+       section {
+        scroll-margin-top: 80px;
+       }
+
+        /* Ajuste de altura das imagens no carrossel */
+        .carousel-item img {
+            height: 1000px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        /* Ajuste do tamanho das imagens dos produtos */
+        .produto-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cabecalho do site com titulo e navegacao-->
+    <header class="bg-primary text-white text-center p-3 fixed-top">
+        <h1>Minimercado Bom Demais</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link text-white" href="#produtos">Produtos</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#servicos">Serviços</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#cadastro">Cadastro</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#agendamento">Agendamento</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+ 
+<!-- Carrossel de imagens para banners promocionais -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicadores do carrossel -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+    </div>
+    
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="amaciante.jpg" class="d-block w-100" alt="Promoção de Produtos">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-2 rounded">
+                <h5>Promoções Imperdíveis</h5>
+                <p>Confira os melhores preços da semana.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="leite.jpg" class="d-block w-100" alt="Ofertas Especiais">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-2 rounded">
+                <h5>Ofertas Especiais</h5>
+                <p>Produtos selecionados com descontos exclusivos.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botoes de navegacao do carrossel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+    
+<main class="container my-5 pt-5">
+    <!--secao de produtos-->
+    <section id="produtos">
+         <h2>Produtos</h2>
+         <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="imagem_arroz.jpg" class="img-fluid" alt="Pacote de arroz">
+                <p>Arroz - R$ 8,00</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="feijao.jpg" class="img-fluid" alt="Pacote de feijão">
+                <p>Feijão - R$ 7,00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+     <section id="servicos" class="my-5">
+        <h2 class="text-center mb-3">Serviços</h2>
+        <p>O Minimercado Bom Demais oferece serviço de entrega de mercadorias para sua comodidade.</p>
+        <p><strong>Entrega Rápida:</strong> Receba seus produtos no conforto da sua casa por apenas <strong>R$ 20,00</strong>.</p>
+     </section>
+
+        <!--Formulario de cadastro de cliente-->
+
+    <!-- Secao Cadastro -->
+    <section id="cadastro" class="mt-5">
+        <h2>Cadastro de Cliente</h2>
+        <form>
+            <div class="mb-2">
+                <label>Nome:</label>
+                <input type="text" class="form-control" required />
+            </div>
+            <div class="mb-2">
+                <label>CPF:</label>
+                <input type="text" class="form-control" required />
+            </div>
+            <div class="mb-2">
+                <label>Endereco:</label>
+                <input type="text" class="form-control" required />
+            </div>
+            <div class="mb-2">
+                <label>Telefone:</label>
+                <input type="tel" class="form-control" required />
+            </div>
+            <div class="mb-2">
+                <label>Email:</label>
+                <input type="email" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
+        </form>
+    </section>
+
+    <!-- Secao Agendamento -->
+     <section id="agendamento" class="mt-5">
+        <h2>Agendamento</h2>
+        <form>
+            <div class="mb-2">
+                <label>Escolha o servico:</label>
+                <select class="form-control">
+                    <option>Retirada no local</option>
+                    <option>Entrega</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <label>Data e Hora:</label>
+                <input type="datetime-local" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-success mt-2">Agendar</button>
+        </form>
+    </section>
+
+</main>
+
+<!-- Rodapé -->
+<footer class="bg-dark text-white py-4 mt-5 border-top">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <!-- Sobre -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-uppercase">Minimercado Bom Demais</h5>
+          <p class="small">
+            Oferecendo qualidade e preços baixos para o seu dia a dia. Atendimento rápido, produtos frescos e entrega garantida.
+          </p>
+        </div>
+  
+        <!-- Contato -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-uppercase">Contato</h5>
+          <ul class="list-unstyled small">
+            <li><i class="bi bi-envelope-fill me-2"></i>contato@minimercadoBomDemais.com</li>
+            <li><i class="bi bi-telephone-fill me-2"></i>(85) 32323-3232</li>
+            <li><i class="bi bi-geo-alt-fill me-2"></i>Av. Central, 123 - Fortaleza/CE</li>
+          </ul>
+        </div>
+  
+        <!-- Redes sociais -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-uppercase">Siga-nos</h5>
+          <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-whatsapp fs-4"></i></a>
+        </div>
+      </div>
+  
+      <!-- Créditos -->
+      <div class="text-center mt-4 border-top pt-3 small">
+        &copy; 2025 Minimercado Bom Demais - Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Link para Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  
+
+</body>
+</html>
